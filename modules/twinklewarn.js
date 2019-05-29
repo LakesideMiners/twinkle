@@ -222,28 +222,6 @@ Twinkle.warn.messages = {
 			},
 		},
 		"Behavior in articles": {
-			"uw-biog": {
-				level1: {
-					label: "Adding unreferenced controversial information about living persons",
-					summary: "General note: Adding unreferenced controversial information about living persons"
-				},
-				level2: {
-					label: "Adding unreferenced controversial information about living persons",
-					summary: "Caution: Adding unreferenced controversial information about living persons"
-				},
-				level3: {
-					label: "Adding unreferenced controversial/defamatory information about living persons",
-					summary: "Warning: Adding unreferenced controversial information about living persons"
-				},
-				level4: {
-					label: "Adding unreferenced defamatory information about living persons",
-					summary: "Final warning: Adding unreferenced controversial information about living persons"
-				},
-				level4im: {
-					label: "Adding unreferenced defamatory information about living persons",
-					summary: "Only warning: Adding unreferenced controversial information about living persons"
-				}
-			},
 			"uw-defamatory": {
 				level1: {
 					label: "Addition of defamatory content",
@@ -282,24 +260,6 @@ Twinkle.warn.messages = {
 				level4: {
 					label: "Introducing deliberate factual errors",
 					summary: "Final warning: Introducing deliberate factual errors"
-				}
-			},
-			"uw-genre": {
-				level1: {
-					label: "Frequent or mass changes to genres without consensus or references",
-					summary: "General note: Frequent or mass changes to genres without consensus or references"
-				},
-				level2: {
-					label: "Frequent or mass changes to genres without consensus or references",
-					summary: "Caution: Frequent or mass changes to genres without consensus or references"
-				},
-				level3: {
-					label: "Frequent or mass changes to genres without consensus or reference",
-					summary: "Warning: Frequent or mass changes to genres without consensus or reference"
-				},
-				level4: {
-					label: "Frequent or mass changes to genres without consensus or reference",
-					summary: "Final warning: Frequent or mass changes to genres without consensus or reference"
 				}
 			},
 			"uw-image": {
@@ -436,24 +396,24 @@ Twinkle.warn.messages = {
 		"Promotions and spam": {
 			"uw-advert": {
 				level1: {
-					label: "Using Wikipedia for advertising or promotion",
-					summary: "General note: Using Wikipedia for advertising or promotion"
+					label: "Using QuIRC for advertising or promotion",
+					summary: "General note: Using QuIRC for advertising or promotion"
 				},
 				level2: {
-					label: "Using Wikipedia for advertising or promotion",
-					summary: "Caution: Using Wikipedia for advertising or promotion"
+					label: "Using QuIRC for advertising or promotion",
+					summary: "Caution: Using QuIRC for advertising or promotion"
 				},
 				level3: {
-					label: "Using Wikipedia for advertising or promotion",
-					summary: "Warning: Using Wikipedia for advertising or promotion"
+					label: "Using QuIRC for advertising or promotion",
+					summary: "Warning: Using QuIRC for advertising or promotion"
 				},
 				level4: {
-					label: "Using Wikipedia for advertising or promotion",
-					summary: "Final warning: Using Wikipedia for advertising or promotion"
+					label: "Using QuIRC for advertising or promotion",
+					summary: "Final warning: Using QuIRC for advertising or promotion"
 				},
 				level4im: {
-					label: "Using Wikipedia for advertising or promotion",
-					summary: "Only warning: Using Wikipedia for advertising or promotion"
+					label: "Using QuIRC for advertising or promotion",
+					summary: "Only warning: Using QuIRC for advertising or promotion"
 				}
 			},
 			"uw-npov": {
@@ -472,24 +432,6 @@ Twinkle.warn.messages = {
 				level4: {
 					label: "Not adhering to neutral point of view",
 					summary: "Final warning: Not adhering to neutral point of view"
-				}
-			},
-			"uw-paid": {
-				level1: {
-					label: "Paid editing without disclosure under the Wikimedia Terms of Use",
-					summary: "General note: Paid editing without disclosure under the Wikimedia Terms of Use"
-				},
-				level2: {
-					label: "Paid editing without disclosure under the Wikimedia Terms of Use",
-					summary: "Caution: Paid editing without disclosure under the Wikimedia Terms of Use"
-				},
-				level3: {
-					label: "Paid editing without disclosure under the Wikimedia Terms of Use",
-					summary: "Warning: Paid editing without disclosure under the Wikimedia Terms of Use"
-				},
-				level4: {
-					label: "Paid editing without disclosure under the Wikimedia Terms of Use",
-					summary: "Final warning: Paid editing without disclosure under the Wikimedia Terms of Use"
 				}
 			},
 			"uw-spam": {
@@ -602,24 +544,6 @@ Twinkle.warn.messages = {
 				level4: {
 					label: "Removing {{afd}} templates",
 					summary: "Final warning: Removing {{afd}} templates"
-				}
-			},
-			"uw-blpprod": {
-				level1: {
-					label: "Removing {{blp prod}} templates",
-					summary: "General note: Removing {{blp prod}} templates"
-				},
-				level2: {
-					label: "Removing {{blp prod}} templates",
-					summary: "Caution: Removing {{blp prod}} templates"
-				},
-				level3: {
-					label: "Removing {{blpprod}} templates",
-					summary: "Warning: Removing {{blpprod}} templates"
-				},
-				level4: {
-					label: "Removing {{blp prod}} templates",
-					summary: "Final warning: Removing {{blp prod}} templates"
 				}
 			},
 			"uw-idt": {
@@ -945,10 +869,6 @@ Twinkle.warn.messages = {
 			label: "Stale userspace draft",
 			summary: "Notice: Stale userspace draft"
 		},
-		"uw-vgscope": {
-			label: "Adding video game walkthroughs, cheats or instructions",
-			summary: "Notice: Adding video game walkthroughs, cheats or instructions"
-		},
 		"uw-warn": {
 			label: "Place user warning templates when reverting vandalism",
 			summary: "Notice: You can use user warning templates when reverting vandalism"
@@ -1013,10 +933,6 @@ Twinkle.warn.messages = {
 		"uw-ewsoft": {
 			label: "Edit warring (softer wording for newcomers)",
 			summary: "Warning: Edit warring"
-		},
-		"uw-hoax": {
-			label: "Creating hoaxes",
-			summary: "Warning: Creating hoaxes"
 		},
 		"uw-legal": {
 			label: "Making legal threats",

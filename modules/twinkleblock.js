@@ -16,7 +16,7 @@ var api = new mw.Api(), relevantUserName;
 
 Twinkle.block = function twinkleblock() {
 	// should show on Contributions pages, anywhere there's a relevant user
-	if ( Morebits.userIsInGroup('sysop') && mw.config.get('wgRelevantUserName') ) {
+	if ( Morebits.userIsInGroup('twblock') && mw.config.get('wgRelevantUserName') ) {
 		Twinkle.addPortletLink(Twinkle.block.callback, 'Block', 'tw-block', 'Block relevant user' );
 	}
 };
@@ -58,7 +58,7 @@ Twinkle.block.callback = function twinkleblockCallback() {
 				{
 					label: 'Add block template to user talk page',
 					value: 'template',
-					tooltip: 'If the blocking admin forgot to issue a block template, or you have just blocked the user without templating them, you can use this to issue the appropriate template.',
+					tooltip: 'If the blocking user forgot to issue a block template, or you have just blocked the user without templating them, you can use this to issue the appropriate template.',
 					checked: true
 				}
 			]
@@ -544,23 +544,8 @@ Twinkle.block.blockPresetsInfo = {
 		autoblock: true,
 		nocreate: true,
 		pageParam: true,
-		reason: 'Using Wikipedia for [[WP:Spam|spam]] or [[WP:NOTADVERTISING|advertising]] purposes',
+		reason: 'Using QuIRC for [[WP:Spam|spam]] or [[WP:NOTADVERTISING|advertising]] purposes',
 		summary: 'You have been blocked from editing for [[WP:SOAP|advertising or self-promotion]]'
-	},
-	'uw-aeblock' : {
-		autoblock: true,
-		nocreate: true,
-		pageParam: true,
-		reason: '[[WP:Arbitration enforcement|Arbitration enforcement]]',
-		reasonParam: true,
-		summary: 'You have been blocked from editing for violating an [[WP:Arbitration|arbitration decision]] with your edits'
-	},
-	'uw-bioblock' : {
-		autoblock: true,
-		nocreate: true,
-		pageParam: true,
-		reason: 'Violations of the [[WP:Biographies of living persons|biographies of living persons]] policy',
-		summary: 'You have been blocked from editing for violations of Wikipedia\'s [[WP:BLP|biographies of living persons policy]]'
 	},
 	'uw-block' : {
 		autoblock: true,
@@ -674,7 +659,7 @@ Twinkle.block.blockPresetsInfo = {
 		autoblock: true,
 		nocreate: true,
 		pageParam: true,
-		reason: 'Using Wikipedia as a [[WP:NOTMYSPACE|blog, web host, social networking site or forum]]',
+		reason: 'Using QuIRC as a [[WP:NOTMYSPACE|blog, web host, social networking site or forum]]',
 		summary: 'You have been blocked from editing for using user and/or article pages as a [[WP:NOTMYSPACE|blog, web host, social networking site or forum]]'
 	},
 	'uw-nothereblock' : {
@@ -703,7 +688,7 @@ Twinkle.block.blockPresetsInfo = {
 		autoblock: true,
 		nocreate: true,
 		reason: 'Using Wikipedia for [[WP:SPAM|spam]] purposes',
-		summary: 'You have been blocked from editing for using Wikipedia for [[WP:SPAM|spam]] purposes'
+		summary: 'You have been blocked from editing for using QuIRC for [[WP:SPAM|spam]] purposes'
 	},
 	'uw-soablock' : {
 		autoblock: true,
@@ -741,7 +726,7 @@ Twinkle.block.blockPresetsInfo = {
 		forRegisteredOnly: true,
 		nocreate: true,
 		reason: '[[WP:SOCK|Sock puppetry]]',
-		summary: 'This account has been blocked as a [[WP:SOCK|sock puppet]] created to violate Wikipedia policy'
+		summary: 'This account has been blocked as a [[WP:SOCK|sock puppet]] created to violate QuIRC policy'
 	},
 	'uw-talkrevoked' : {
 		disabletalk: true,
@@ -761,7 +746,7 @@ Twinkle.block.blockPresetsInfo = {
 		expiry: 'infinity',
 		forRegisteredOnly: true,
 		reason: '{{uw-ublock-double}} <!-- Username closely resembles another user, soft block -->',
-		summary: 'You have been indefinitely blocked from editing because your [[WP:U|username]] is too similar to the username of another Wikipedia user'
+		summary: 'You have been indefinitely blocked from editing because your [[WP:U|username]] is too similar to the username of another QuIRC Wiki user'
 	},
 	'uw-ucblock' : {
 		autoblock: true,
@@ -786,13 +771,13 @@ Twinkle.block.blockPresetsInfo = {
 		reason: '{{uw-ublock-famous}} <!-- Username represents a famous person, soft block -->',
 		summary: 'You have been indefinitely blocked from editing because your [[WP:U|username]] matches the name of a well-known living individual'
 	},
-	'uw-uhblock-double': {
+	'uw-uhblock-double':
 		autoblock: true,
 		expiry: 'infinity',
 		forRegisteredOnly: true,
 		nocreate: true,
 		reason: '{{uw-ublock-double}} <!-- Username closely resembles another user, hard block -->',
-		summary: 'You have been indefinitely blocked from editing because your [[WP:U|username]] appears to impersonate another established Wikipedia user'
+		summary: 'You have been indefinitely blocked from editing because your [[WP:U|username]] appears to impersonate another established QuIRC user'
 	},
 	'uw-vaublock' : {
 		autoblock: true,
@@ -873,9 +858,7 @@ Twinkle.block.blockGroups = [
 		label: 'Extended reasons',
 		list: [
 			{ label: 'Advertising', value: 'uw-adblock' },
-			{ label: 'Arbitration enforcement', value: 'uw-aeblock' },
 			{ label: 'Block evasion – IP', value: 'uw-ipevadeblock' },
-			{ label: 'BLP violations', value: 'uw-bioblock' },
 			{ label: 'Copyright violations', value: 'uw-copyrightblock' },
 			{ label: 'Creating nonsense pages', value: 'uw-npblock' },
 			{ label: 'Edit filter-related', value: 'uw-efblock' },

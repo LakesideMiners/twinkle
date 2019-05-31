@@ -747,11 +747,6 @@ Twinkle.warn.messages = {
 			summary: "Notice: \"Biting\" newcomers",
 			suppressArticleInSummary: true  // non-standard (user name, not article), and not necessary
 		},
-		"uw-coi": {
-			label: "Conflict of interest",
-			summary: "Notice: Conflict of interest",
-			heading: "Managing a conflict of interest"
-		},
 		"uw-controversial": {
 			label: "Introducing controversial material",
 			summary: "Notice: Introducing controversial material"
@@ -800,10 +795,6 @@ Twinkle.warn.messages = {
 			label: "Adding external links to the body of an article",
 			summary: "Notice: Keep external links to External links sections at the bottom of an article"
 		},
-		"uw-italicize": {
-			label: "Italicize books, films, albums, magazines, TV series, etc within articles",
-			summary: "Notice: Italicize books, films, albums, magazines, TV series, etc within articles"
-		},
 		"uw-lang": {
 			label: "Unnecessarily changing between British and American English",
 			summary: "Notice: Unnecessarily changing between British and American English",
@@ -842,16 +833,12 @@ Twinkle.warn.messages = {
 			summary: "Notice: Reverting self tests"
 		},
 		"uw-socialnetwork": {
-			label: "Wikipedia is not a social network",
-			summary: "Notice: Wikipedia is not a social network"
+			label: "The QuIRC Wiki is not a social network",
+			summary: "Notice: The QuIRC Wiki is not a social network"
 		},
 		"uw-sofixit": {
 			label: "Be bold and fix things yourself",
 			summary: "Notice: You can be bold and fix things yourself"
-		},
-		"uw-spoiler": {
-			label: "Adding spoiler alerts or removing spoilers from appropriate sections",
-			summary: "Notice: Don't delete or flag potential 'spoilers' in Wikipedia articles"
 		},
 		"uw-talkinarticle": {
 			label: "Talk in article",

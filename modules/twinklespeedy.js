@@ -78,7 +78,7 @@ Twinkle.speedy.mode = {
 // Prepares the speedy deletion dialog and displays it
 Twinkle.speedy.initDialog = function twinklespeedyInitDialog(callbackfunc) {
 	var dialog;
-	var isSysop = Morebits.userIsInGroup( 'sysop' );
+	var isSysop = Morebits.userIsInGroup( 'sysop' || 'Vandal_Officer' || 'Administrators');
 	Twinkle.speedy.dialog = new Morebits.simpleWindow( Twinkle.getPref('speedyWindowWidth'), Twinkle.getPref('speedyWindowHeight') );
 	dialog = Twinkle.speedy.dialog;
 	dialog.setTitle( "Choose criteria for speedy deletion" );
@@ -549,121 +549,16 @@ Twinkle.speedy.talkList = [
 
 Twinkle.speedy.fileList = [
 	{
-		label: 'F1: Redundant file',
-		value: 'redundantimage',
-		tooltip: 'Any file that is a redundant copy, in the same file format and same or lower resolution, of something else on Wikipedia. Likewise, other media that is a redundant copy, in the same format and of the same or lower quality. This does not apply to files duplicated on Wikimedia Commons, because of licence issues; these should be tagged with {{subst:ncd|Image:newname.ext}} or {{subst:ncd}} instead',
-		subgroup: {
-			name: 'redundantimage_filename',
-			type: 'input',
-			label: 'File this is redundant to: ',
-			tooltip: 'The "File:" prefix can be left off.'
-		}
+		label: 'F1: No reasonabal used on the project.',
+		value: 'nouse',
+		tooltip: 'Any file where the file could not reasonably be used on the project.'
 	},
 	{
-		label: 'F2: Corrupt or blank file',
-		value: 'noimage',
-		tooltip: 'Before deleting this type of file, verify that the MediaWiki engine cannot read it by previewing a resized thumbnail of it. This also includes empty (i.e., no content) file description pages for Commons files'
-	},
-	{
-		label: 'F2: Unneeded file description page for a file on Commons',
-		value: 'fpcfail',
+		label: 'F2: Porn or Violent Content',
+		value: 'porn',
 		tooltip: 'An image, hosted on Commons, but with tags or information on its English Wikipedia description page that are no longer needed. (For example, a failed featured picture candidate.)',
 		hideWhenMultiple: true
 	},
-	{
-		label: 'F3: Improper license',
-		value: 'noncom',
-		tooltip: 'Files licensed as "for non-commercial use only", "non-derivative use" or "used with permission" that were uploaded on or after 2005-05-19, except where they have been shown to comply with the limited standards for the use of non-free content. This includes files licensed under a "Non-commercial Creative Commons License". Such files uploaded before 2005-05-19 may also be speedily deleted if they are not used in any articles'
-	},
-	{
-		label: 'F4: Lack of licensing information',
-		value: 'unksource',
-		tooltip: 'Files in category "Files with unknown source", "Files with unknown copyright status", or "Files with no copyright tag" that have been tagged with a template that places them in the category for more than seven days, regardless of when uploaded. Note, users sometimes specify their source in the upload summary, so be sure to check the circumstances of the file.',
-		hideWhenUser: true
-	},
-	{
-		label: 'F5: Unused unfree copyrighted file',
-		value: 'f5',
-		tooltip: 'Files that are not under a free license or in the public domain that are not used in any article, whose only use is in a deleted article, and that are very unlikely to be used on any other article. Reasonable exceptions may be made for files uploaded for an upcoming article. For other unused non-free files, use the "Orphaned fair use" option in Twinkle\'s DI tab.',
-		hideWhenUser: true
-	},
-	{
-		label: 'F6: Missing fair-use rationale',
-		value: 'norat',
-		tooltip: 'Any file without a fair use rationale may be deleted seven days after it is uploaded.  Boilerplate fair use templates do not constitute a fair use rationale.  Files uploaded before 2006-05-04 should not be deleted immediately; instead, the uploader should be notified that a fair-use rationale is needed.  Files uploaded after 2006-05-04 can be tagged using the "No fair use rationale" option in Twinkle\'s DI module. Such files can be found in the dated subcategories of Category:Files with no fair use rationale.',
-		hideWhenUser: true
-	},
-	{
-		label: 'F7: Clearly invalid fair-use tag',
-		value: 'badfairuse',  // same as below
-		tooltip: 'This is only for files with a clearly invalid fair-use tag, such as a {{Non-free logo}} tag on a photograph of a mascot. For cases that require a waiting period (replaceable images or otherwise disputed rationales), use the options on Twinkle\'s DI tab.',
-		subgroup: {
-			name: 'badfairuse_rationale',
-			type: 'input',
-			label: 'Optional explanation: ',
-			size: 60
-		}
-	},
-	{
-		label: 'F7: Fair-use media from a commercial image agency which is not the subject of sourced commentary',
-		value: 'badfairuse',  // same as above
-		tooltip: 'Non-free images or media from a commercial source (e.g., Associated Press, Getty), where the file itself is not the subject of sourced commentary, are considered an invalid claim of fair use and fail the strict requirements of WP:NFCC.',
-		subgroup: {
-			name: 'badfairuse_rationale',
-			type: 'input',
-			label: 'Optional explanation: ',
-			size: 60
-		},
-		hideWhenMultiple: true
-	},
-	{
-		label: 'F8: File available as an identical or higher-resolution copy on Wikimedia Commons',
-		value: 'commons',
-		tooltip: 'Provided the following conditions are met: 1: The file format of both images is the same. 2: The file\'s license and source status is beyond reasonable doubt, and the license is undoubtedly accepted at Commons. 3: All information on the file description page is present on the Commons file description page. That includes the complete upload history with links to the uploader\'s local user pages. 4: The file is not protected, and the file description page does not contain a request not to move it to Commons. 5: If the file is available on Commons under a different name than locally, all local references to the file must be updated to point to the title used at Commons. 6: For {{c-uploaded}} files: They may be speedily deleted as soon as they are off the Main Page',
-		subgroup: {
-			name: 'commons_filename',
-			type: 'input',
-			label: 'Filename on Commons: ',
-			value: Morebits.pageNameNorm,
-			tooltip: 'This can be left blank if the file has the same name on Commons as here. The "File:" prefix is optional.'
-		},
-		hideWhenMultiple: true
-	},
-	{
-		label: 'F9: Unambiguous copyright infringement',
-		value: 'imgcopyvio',
-		tooltip: 'The file was copied from a website or other source that does not have a license compatible with Wikipedia, and the uploader neither claims fair use nor makes a credible assertion of permission of free use. Sources that do not have a license compatible with Wikipedia include stock photo libraries such as Getty Images or Corbis. Non-blatant copyright infringements should be discussed at Wikipedia:Files for deletion',
-		subgroup: [
-			{
-				name: 'imgcopyvio_url',
-				type: 'input',
-				label: 'URL of the copyvio, including the "http://".  If the copyvio is of a non-internet source and you cannot provide a URL, you must use the deletion rationale box. ',
-				size: 60
-			},
-			{
-				name: 'imgcopyvio_rationale',
-				type: 'input',
-				label: 'Deletion rationale for non-internet copyvios: ',
-				size: 60
-			}
-		]
-	},
-	{
-		label: 'F10: Useless non-media file',
-		value: 'badfiletype',
-		tooltip: 'Files uploaded that are neither image, sound, nor video files (e.g. .doc, .pdf, or .xls files) which are not used in any article and have no foreseeable encyclopedic use'
-	},
-	{
-		label: 'F11: No evidence of permission',
-		value: 'nopermission',
-		tooltip: 'If an uploader has specified a license and has named a third party as the source/copyright holder without providing evidence that this third party has in fact agreed, the item may be deleted seven days after notification of the uploader',
-		hideWhenUser: true
-	},
-	{
-		label: 'G8: File description page with no corresponding file',
-		value: 'imagepage',
-		tooltip: 'This is only for use when the file doesn\'t exist at all. Corrupt files, and local description pages for files on Commons, should use F2; implausible redirects should use R3; and broken Commons redirects should use R4.'
-	}
 ];
 
 Twinkle.speedy.articleList = [
@@ -861,25 +756,6 @@ Twinkle.speedy.templateList = [
 	}
 ];
 
-Twinkle.speedy.portalList = [
-	{
-		label: 'P1: Portal that would be subject to speedy deletion if it were an article',
-		value: 'p1',
-		tooltip: 'You must specify a single article criterion that applies in this case (A1, A3, A7, or A10).',
-		subgroup: {
-			name: 'p1_criterion',
-			type: 'input',
-			label: 'Article criterion that would apply: '
-		},
-		hideWhenMultiple: true
-	},
-	{
-		label: 'P2: Underpopulated portal',
-		value: 'emptyportal',
-		tooltip: 'Any Portal based on a topic for which there is not a non-stub header article, and at least three non-stub articles detailing subject matter that would be appropriate to discuss under the title of that Portal'
-	}
-];
-
 Twinkle.speedy.generalList = [
 	{
 		label: 'G1: Patent nonsense. Pages consisting purely of incoherent text or gibberish with no meaningful content or history.',
@@ -899,12 +775,6 @@ Twinkle.speedy.generalList = [
 		tooltip: 'Plain pure vandalism (including redirects left behind from pagemove vandalism)'
 	},
 	{
-		label: 'G3: Blatant hoax',
-		value: 'hoax',
-		tooltip: 'Blatant and obvious hoax, to the point of vandalism',
-		hideWhenMultiple: true
-	},
-	{
 		label: 'G4: Recreation of material deleted via a deletion discussion',
 		value: 'repost',
 		tooltip: 'A copy, by any title, of a page that was deleted via an XfD process or Deletion review, provided that the copy is substantially identical to the deleted version. This clause does not apply to content that has been "userfied", to content undeleted as a result of Deletion review, or if the prior deletions were proposed or speedy deletions, although in this last case, other speedy deletion criteria may still apply',
@@ -918,73 +788,7 @@ Twinkle.speedy.generalList = [
 		hideSubgroupWhenMultiple: true
 	},
 	{
-		label: 'G5: Banned or blocked user',
-		value: 'banned',
-		tooltip: 'Pages created by banned or blocked users in violation of their ban or block, and which have no substantial edits by others',
-		subgroup: {
-			name: 'banned_user',
-			type: 'input',
-			label: 'Username of banned user (if available): ',
-			tooltip: 'Should not start with "User:"'
-		},
-		hideSubgroupWhenMultiple: true
-	},
-	{
-		label: 'G6: Move',
-		value: 'move',
-		tooltip: 'Making way for an uncontroversial move like reversing a redirect',
-		subgroup: [
-			{
-				name: 'move_page',
-				type: 'input',
-				label: 'Page to be moved here: '
-			},
-			{
-				name: 'move_reason',
-				type: 'input',
-				label: 'Reason: ',
-				size: 60
-			}
-		],
-		hideWhenMultiple: true
-	},
-	{
-		label: 'G6: XfD',
-		value: 'xfd',
-		tooltip: 'A deletion discussion (at AfD, FfD, RfD, TfD, CfD, or MfD) was closed as "delete", but the page wasn\'t actually deleted.',
-		subgroup: {
-			name: 'xfd_fullvotepage',
-			type: 'input',
-			label: 'Page where the deletion discussion was held: ',
-			tooltip: 'Must start with "Wikipedia:"',
-			size: 40
-		},
-		hideWhenMultiple: true
-	},
-	{
-		label: 'G6: Copy-and-paste page move',
-		value: 'copypaste',
-		tooltip: 'This only applies for a copy-and-paste page move of another page that needs to be temporarily deleted to make room for a clean page move.',
-		subgroup: {
-			name: 'copypaste_sourcepage',
-			type: 'input',
-			label: 'Original page that was copy-pasted here: '
-		},
-		hideWhenMultiple: true
-	},
-	{
-		label: 'G6: Housekeeping',
-		value: 'g6',
-		tooltip: 'Other non-controversial "housekeeping" tasks',
-		subgroup: {
-			name: 'g6_rationale',
-			type: 'input',
-			label: 'Rationale: ',
-			size: 60
-		}
-	},
-	{
-		label: 'G7: Author requests deletion, or author blanked',
+		label: 'G4 Author requests deletion, or author blanked',
 		value: 'author',
 		tooltip: 'Any page for which deletion is requested by the original author in good faith, provided the page\'s only substantial content was added by its author. If the author blanks the page, this can also be taken as a deletion request.',
 		subgroup: {
@@ -997,41 +801,29 @@ Twinkle.speedy.generalList = [
 		hideSubgroupWhenSysop: true
 	},
 	{
-		label: 'G8: Pages dependent on a non-existent or deleted page',
-		value: 'g8',
+		label: 'G5: Pages dependent on a non-existent or deleted page',
+		value: 'g5',
 		tooltip: 'such as talk pages with no corresponding subject page; subpages with no parent page; file pages without a corresponding file; redirects to invalid targets, such as nonexistent targets, redirect loops, and bad titles; or categories populated by deleted or retargeted templates. This excludes any page that is useful to the project, and in particular: deletion discussions that are not logged elsewhere, user and user talk pages, talk page archives, plausible redirects that can be changed to valid targets, and file pages or talk pages for files that exist on Wikimedia Commons.',
 		subgroup: {
-			name: 'g8_rationale',
+			name: 'g5_rationale',
 			type: 'input',
 			label: 'Optional explanation: ',
 			size: 60
 		}
 	},
+
 	{
-		label: 'G8: Subpages with no parent page',
-		value: 'subpage',
-		tooltip: 'This excludes any page that is useful to the project, and in particular: deletion discussions that are not logged elsewhere, user and user talk pages, talk page archives, plausible redirects that can be changed to valid targets, and file pages or talk pages for files that exist on Wikimedia Commons.',
-		hideWhenMultiple: true,
-		hideInNamespaces: [ 0, 6, 8 ]  // hide in main, file, and mediawiki-spaces
-	},
-	{
-		label: 'G10: Attack page',
+		label: 'G6: Attack page',
 		value: 'attack',
 		tooltip: 'Pages that serve no purpose but to disparage their subject or some other entity (e.g., "John Q. Doe is an imbecile"). This includes a biography of a living person that is negative in tone and unsourced, where there is no NPOV version in the history to revert to. Administrators deleting such pages should not quote the content of the page in the deletion summary!'
 	},
 	{
-		label: 'G10: Wholly negative, unsourced BLP',
-		value: 'negublp',
-		tooltip: 'A biography of a living person that is entirely negative in tone and unsourced, where there is no neutral version in the history to revert to.',
-		hideWhenMultiple: true
-	},
-	{
-		label: 'G11: Unambiguous advertising',
+		label: 'G7: Unambiguous advertising',
 		value: 'spam',
 		tooltip: 'Pages which exclusively promote a company, product, group, service, or person and which would need to be fundamentally rewritten in order to become encyclopedic. Note that an article about a company or a product which describes its subject from a neutral point of view does not qualify for this criterion; an article that is blatant advertising should have inappropriate content as well'
 	},
 	{
-		label: 'G12: Unambiguous copyright infringement',
+		label: 'G18: Unambiguous copyright infringement',
 		value: 'copyvio',
 		tooltip: 'Either: (1) Material was copied from another website that does not have a license compatible with Wikipedia, or is photography from a stock photo seller (such as Getty Images or Corbis) or other commercial content provider; (2) There is no non-infringing content in the page history worth saving; or (3) The infringement was introduced at once by a single person rather than created organically on wiki and then copied by another website such as one of the many Wikipedia mirrors',
 		subgroup: [

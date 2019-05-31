@@ -16,7 +16,7 @@
 	
 	Twinkle.block = function twinkleblock() {
 		// should show on Contributions pages, anywhere there's a relevant user
-		if ( Morebits.userIsInGroup('sysop') && mw.config.get('wgRelevantUserName') ) {
+		if ( Morebits.userIsInGroup('Administrators' || 'Vandal_Officer') && mw.config.get('wgRelevantUserName') ) {
 			Twinkle.addPortletLink(Twinkle.block.callback, 'Block', 'tw-block', 'Block relevant user' );
 		}
 	};

@@ -15,6 +15,7 @@
  *
  * This is AzaToth's Twinkle, the popular script sidekick for newbies, admins, and
  * every Wikipedian in between. Visit [[WP:TW]] for more information.
+ * This Twinkle was modfied by enwiki user [[User:LakesideMiners]] for use on QuIRC Wiki.
  */
 //<nowiki>
 

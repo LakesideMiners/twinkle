@@ -21,7 +21,7 @@ Twinkle.protect = function twinkleprotect() {
 	}
 
 	Twinkle.addPortletLink(Twinkle.protect.callback, Morebits.userIsInGroup('sysop') ? "PP" : "RPP", "tw-rpp",
-		Morebits.userIsInGroup('sysop') ? "Protect page" : "Request page protection" );
+		Morebits.userIsInGroup( 'sysop' || 'Vandal_Officer' ) ? "Protect page" : "Request page protection" );
 };
 
 Twinkle.protect.callback = function twinkleprotectCallback() {
@@ -37,7 +37,7 @@ Twinkle.protect.callback = function twinkleprotectCallback() {
 			type: 'field',
 			label: 'Type of action'
 		} );
-	if( Morebits.userIsInGroup( 'sysop' ) ) {
+	if( Morebits.userIsInGroup( 'sysop' || 'Vandal_Officer' ) ) {
 		actionfield.append( {
 				type: 'radio',
 				name: 'actiontype',
@@ -61,7 +61,7 @@ Twinkle.protect.callback = function twinkleprotectCallback() {
 					label: 'Request page protection',
 					value: 'request',
 					tooltip: 'If you want to request protection via WP:RPP' + (Morebits.userIsInGroup('sysop') ? ' instead of doing the protection by yourself.' : '.'),
-					checked: !Morebits.userIsInGroup('sysop')
+					checked: !Morebits.userIsInGroup('sysop' || 'Vandal_Officer')
 				},
 				{
 					label: 'Tag page with protection template',
